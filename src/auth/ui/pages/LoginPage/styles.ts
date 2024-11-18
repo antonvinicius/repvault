@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import loginBg from '../../../shared/ui/assets/login_background.png'
-import { devices } from "../../../shared/ui/helpers/devices";
+import loginBg from '../../../../shared/ui/assets/login_background.png'
+import { devices } from "../../../../shared/ui/helpers/devices";
+import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
     display: flex;
@@ -56,7 +57,7 @@ export const RegisterText = styled.p`
     margin-right: 4px;
 `
 
-export const RegisterLink = styled.a`
+export const RegisterLink = styled(Link)`
     color: ${props => props.theme.primary};
     text-align: center;
 

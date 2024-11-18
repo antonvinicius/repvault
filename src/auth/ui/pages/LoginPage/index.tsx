@@ -1,6 +1,6 @@
-import { Button } from "../../../shared/ui/components/Button";
-import { Input } from "../../../shared/ui/components/Input";
-import { Spacer } from "../../../shared/ui/components/Spacer";
+import { Button } from "../../../../shared/ui/components/Button";
+import { Input } from "../../../../shared/ui/components/Input";
+import { Spacer } from "../../../../shared/ui/components/Spacer";
 import { Container, Footer, RegisterLink, RegisterText, Subtitle, Title, Wrapper } from "./styles";
 
 export function LoginPage() {
@@ -18,7 +18,7 @@ export function LoginPage() {
         <Spacer direction="vertical" />
         <Footer>
           <RegisterText>Sua primeira vez aqui?</RegisterText>
-          <RegisterLink>Criar uma conta</RegisterLink>
+          <RegisterLink to={"/register"}>Criar uma conta</RegisterLink>
         </Footer>
       </Container>
     </Wrapper>
