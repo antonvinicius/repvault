@@ -17,6 +17,50 @@ export const Header = styled.div`
     margin: auto;
 `
 
+export const HeaderProfile = styled.div`
+    align-items: center;
+    display: flex;
+`
+
+export const ImageChange = styled.div`
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+
+    
+`
+
+export const ProfilePicture = styled.img`
+    z-index: -99;
+`
+
+export const ImageWrapper = styled.div`
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
+
+    &:hover ${ImageChange} {
+        visibility: visible;
+    }
+`
+
+export const ProfileName = styled.div`
+    display: flex;
+    margin-left: 24px;
+    flex-direction: column;
+`
+
 export const HeaderWrapper = styled.div`
     background-color: ${props => props.theme.card};
     width: 100%;
