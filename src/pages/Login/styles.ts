@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import loginBg from '../../../../shared/ui/assets/login_background.png'
-import { devices } from "../../../../shared/ui/helpers/devices";
+import loginBg from '../../assets/login_background.png'
+import { devices } from "../../helpers/devices";
 import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`

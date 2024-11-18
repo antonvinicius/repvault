@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { LoginPage } from "../../../auth/ui/pages/LoginPage";
+import { LoginPage } from "../pages/Login";
 import { PrivateRoutes } from "./PrivateRoutes";
-import { SongsListPage } from "../../../songs/ui/pages/SongsListPage";
-import { SongsSearchPage } from "../../../songs/ui/pages/SongsSearchPage";
-import { RegisterPage } from "../../../auth/ui/pages/RegisterPage";
+import { SongsListPage } from "../pages/Songs";
+import { SongsSearchPage } from "../pages/Search";
+import { RegisterPage } from "../pages/Register";
 
 export function AppRoutes() {
     return (

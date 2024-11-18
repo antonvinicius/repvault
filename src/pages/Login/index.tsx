@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import { Button } from "../../../../shared/ui/components/Button";
-import { Input } from "../../../../shared/ui/components/Input";
-import { Spacer } from "../../../../shared/ui/components/Spacer";
+import { Button } from "../../components/Button";
+import { Input } from "../../components/Input";
+import { Spacer } from "../../components/Spacer";
 import { Container, Footer, RegisterLink, RegisterText, Subtitle, Title, Wrapper } from "./styles";
 
 type LoginInputs = {
