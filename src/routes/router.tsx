@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-import { LoginPage } from "../pages/Login";
+import { Login } from "../pages/Login";
 import { ProtectedPage } from "./ProtectedPage";
-import { SongsListPage } from "../pages/Songs";
-import { SongsSearchPage } from "../pages/Search";
+import { Songs } from "../pages/Songs";
+import { Search } from "../pages/Search";
 import { Root } from "../pages/Root";
-import { RegisterPage } from "../pages/Register";
+import { Register } from "../pages/Register";
 import { PublicPage } from "./PublicPage";
 
 export const router = createBrowserRouter([
@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
                 path: 'login',
                 element: (
                     <PublicPage>
-                        <LoginPage />
+                        <Login />
                     </PublicPage>
                 )
             },
@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
                 path: 'register',
                 element: (
                     <PublicPage>
-                        <RegisterPage />
+                        <Register />
                     </PublicPage>
                 )
             },
@@ -35,11 +35,11 @@ export const router = createBrowserRouter([
                 children: [
                     {
                         path: '/',
-                        element: <SongsListPage />
+                        element: <Songs />
                     },
                     {
                         path: 'search',
-                        element: <SongsSearchPage />
+                        element: <Search />
                     }
                 ]
             }

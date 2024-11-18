@@ -17,7 +17,7 @@ const schema = yup
 
 type FormData = yup.InferType<typeof schema>
 
-export function RegisterPage() {
+export function Register() {
   const {
     handleSubmit,
     formState: { errors },

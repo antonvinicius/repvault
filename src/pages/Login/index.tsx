@@ -10,7 +10,7 @@ type LoginInputs = {
   password: string;
 }
 
-export function LoginPage() {
+export function Login() {
   const { signIn } = useAuth()
 
   const {

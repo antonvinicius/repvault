@@ -1,6 +1,5 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { Content, Footer, Header, Wrapper } from "./styles";
-import { Button } from "../Button";
 import { useAuth } from "../../contexts/AuthContext";
 import { FiLogOut } from "react-icons/fi";
 import { useTheme } from "styled-components";
