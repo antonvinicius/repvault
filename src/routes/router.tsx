@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Login } from "../pages/Login";
-import { ProtectedPage } from "./ProtectedPage";
+import { ProtectedPage, ProtectedWithoutLayout } from "./ProtectedPage";
 import { Songs } from "../pages/Songs";
 import { Search } from "../pages/Search";
 import { Root } from "../pages/Root";
 import { Register } from "../pages/Register";
 import { PublicPage } from "./PublicPage";
+import { AddSong } from "../pages/AddSong";
 
 export const router = createBrowserRouter([
     {
@@ -40,6 +41,16 @@ export const router = createBrowserRouter([
                     {
                         path: 'search',
                         element: <Search />
+                    },
+                ]
+            },
+            {
+                path: 'song',
+                element: <ProtectedWithoutLayout />,
+                children: [
+                    {
+                        path: 'add',
+                        element: <AddSong />
                     }
                 ]
             }

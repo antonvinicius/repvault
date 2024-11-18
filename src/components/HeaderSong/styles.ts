@@ -1,0 +1,14 @@
+import styled from "styled-components";
+
+export const Container = styled.div`
+    display: flex;
+    padding: 16px;
+    align-items: center;
+    color: ${props => props.theme.primary};
+    margin-bottom: 24px;
+    h1 {
+        flex: 1;
+        font-size: 20px;
+        text-align: center;
+    }
+`

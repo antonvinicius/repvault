@@ -3,12 +3,13 @@ import { Spacer } from "../Spacer";
 import { Container } from "./styles";
 
 type SongProps = {
-    song: SongModel
+    song: SongModel,
+    onClick?: (song: SongModel) => void
 }
 
-export function Song({ song }: SongProps) {
+export function Song({ song, onClick }: SongProps) {
     return (
-        <Container>
+        <Container onClick={() => { onClick && onClick(song) }}>
             <img src={song.coverImageUrl!} />
             <Spacer direction="horizontal" size={18} />
             <div>

@@ -5,47 +5,18 @@ import { Song } from "../../components/Song"
 import { Container } from "./styles"
 import { Spacer } from "../../components/Spacer"
 import { Status } from "../../components/Status"
+import { SongService } from "../../services/song-service"
+
+const songService = new SongService()
 
 export function Songs() {
-  const [songs, setSongs] = useState<SongModel[]>([
-    {
-      artist: 'Oasis',
-      coverImageUrl: 'https://i.scdn.co/image/ab67616d0000b27365b227c58f4d337f5d41a963',
-      created_at: '',
-      id: '1',
-      name: 'Stand By Me',
-      status: 1
-    },
-    {
-      artist: 'Oasis',
-      coverImageUrl: 'https://i.scdn.co/image/ab67616d0000b27365b227c58f4d337f5d41a963',
-      created_at: '',
-      id: '2',
-      name: 'Stand By Me',
-      status: 1
-    },
-    {
-      artist: 'Oasis',
-      coverImageUrl: 'https://i.scdn.co/image/ab67616d0000b27365b227c58f4d337f5d41a963',
-      created_at: '',
-      id: '3',
-      name: 'Stand By Me',
-      status: 1
-    },
-    {
-      artist: 'Oasis',
-      coverImageUrl: 'https://i.scdn.co/image/ab67616d0000b27365b227c58f4d337f5d41a963',
-      created_at: '',
-      id: '4',
-      name: 'Stand By Me',
-      status: 1
-    },
-  ])
+  const [status, setStatus] = useState(0)
+  const [songs, setSongs] = useState<SongModel[]>([])
 
   async function fetchSongs() {
-    const { data, error } = await supabase
-      .from("songs")
-      .select()
+    const data = await songService.getSongs()
+
+    setSongs(data)
   }
 
   useEffect(() => {
@@ -56,7 +27,7 @@ export function Songs() {
     <Container>
       <h1>Meu Repertório</h1>
       <Spacer direction="vertical" />
-      <Status selectedStatus={0} />
+      <Status selectedStatus={status} onStatusChanged={setStatus} />
       <Spacer direction="vertical" />
       {songs.map(item => (
         <div key={item.id}>

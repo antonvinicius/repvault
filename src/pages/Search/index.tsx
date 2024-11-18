@@ -7,6 +7,7 @@ import { SpotifyService } from "../../services/spotify-service";
 import { Song as SongModel } from "../../models/Song";
 import { Song } from "../../components/Song";
 import { Spacer } from "../../components/Spacer";
+import { useNavigate } from "react-router-dom";
 
 type FormData = {
   search: string
@@ -20,8 +21,9 @@ export function Search() {
     register,
     watch
   } = useForm<FormData>()
-
+  const navigate = useNavigate()
   const searchValue = watch('search')
+  const debouncedSearch = debounce(searchSongs, 500)
 
   async function searchSongs(search: string) {
     if (search) {
@@ -31,7 +33,15 @@ export function Search() {
     }
   }
 
-  const debouncedSearch = debounce(searchSongs, 500)
+  async function onSongClick(song: SongModel) {
+    navigate('/song/add', {
+      state: {
+        name: song.name,
+        artist: song.artist,
+        coverImageUrl: song.coverImageUrl
+      }
+    })
+  }
 
   useEffect(() => {
     debouncedSearch(searchValue)
@@ -44,7 +54,7 @@ export function Search() {
       <Input placeholder="Qual música deseja aprender hoje?" {...register('search')} />
       {songs.map(song => (
         <div key={song.id}>
-          <Song song={song} />
+          <Song song={song} onClick={onSongClick} />
           <Spacer direction="vertical" size={12} />
         </div>
       ))}

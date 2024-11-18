@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { Layout } from "../components/Layout";
 
@@ -10,4 +10,14 @@ export function ProtectedPage() {
     }
 
     return <Layout />;
+}
+
+export function ProtectedWithoutLayout() {
+    const { user } = useAuth();
+
+    if (!user) {
+        return <Navigate to='/login' replace />;
+    }
+
+    return <Outlet />;
 }
