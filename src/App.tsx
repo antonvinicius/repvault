@@ -1,12 +1,16 @@
 import { ThemeProvider } from "styled-components";
 import { theme } from "./theme/theme.ts";
 import { GlobalStyle } from "./theme/globalStyle.ts";
-import { AppRoutes } from "./routes/AppRoutes.tsx";
+import { AuthContextProvider } from "./contexts/AuthContext.tsx";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/AppRoutes.tsx";
 
 export function App() {
   return (
     <ThemeProvider theme={theme}>
-      <AppRoutes />
+      <AuthContextProvider>
+        <RouterProvider router={router} />
+      </AuthContextProvider>
       <GlobalStyle />
     </ThemeProvider>
   )

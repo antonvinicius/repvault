@@ -1,22 +1,48 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { LoginPage } from "../pages/Login";
-import { PrivateRoutes } from "./PrivateRoutes";
+import { ProtectedPage } from "./ProtectedPage";
 import { SongsListPage } from "../pages/Songs";
 import { SongsSearchPage } from "../pages/Search";
+import { Root } from "../pages/Root";
 import { RegisterPage } from "../pages/Register";
+import { PublicPage } from "./PublicPage";
 
-export function AppRoutes() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route element={<PrivateRoutes />}>
-                    <Route path="/" element={<SongsListPage />} />
-                    <Route path="/search" element={<SongsSearchPage />} />
-                </Route>
-                <Route path="*" element={<h1>Not Found</h1>} />
-            </Routes>
-        </BrowserRouter>
-    )
-}
+export const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <Root />,
+        errorElement: <h1>Error</h1>,
+        children: [
+            {
+                path: 'login',
+                element: (
+                    <PublicPage>
+                        <LoginPage />
+                    </PublicPage>
+                )
+            },
+            {
+                path: 'register',
+                element: (
+                    <PublicPage>
+                        <RegisterPage />
+                    </PublicPage>
+                )
+            },
+            {
+                path: '/',
+                element: <ProtectedPage />,
+                children: [
+                    {
+                        path: '/songs',
+                        element: <SongsListPage />
+                    },
+                    {
+                        path: '/search',
+                        element: <SongsSearchPage />
+                    }
+                ]
+            }
+        ]
+    }
+])

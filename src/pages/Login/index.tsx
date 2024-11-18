@@ -3,6 +3,7 @@ import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { Spacer } from "../../components/Spacer";
 import { Container, Footer, RegisterLink, RegisterText, Subtitle, Title, Wrapper } from "./styles";
+import { useAuth } from "../../contexts/AuthContext";
 
 type LoginInputs = {
   username: string;
@@ -10,14 +11,16 @@ type LoginInputs = {
 }
 
 export function LoginPage() {
+  const { signIn } = useAuth()
+
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm<LoginInputs>()
 
-  function onSubmit(data: LoginInputs) {
-    console.log(data)
+  async function onSubmit(data: LoginInputs) {
+    await signIn(data.username, data.password)
   }
 
   return (
