@@ -5,6 +5,7 @@ import { Spacer } from "../../components/Spacer";
 import { Container, Wrapper } from "./styles";
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup";
+import { supabase } from "../../supabase";
 
 const schema = yup
   .object({
@@ -13,6 +14,8 @@ const schema = yup
     password: yup.string().min(6, "A senha deve conter no mínimo 6 caracteres"),
     confirmPassword: yup.string().oneOf([yup.ref("password")], "As senhas devem ser iguais")
   })
+
+type FormData = yup.InferType<typeof schema>
 
 export function RegisterPage() {
   const {
@@ -23,8 +26,11 @@ export function RegisterPage() {
     resolver: yupResolver(schema)
   })
 
-  function onSubmit(data: any) {
-    console.log(data)
+  async function onSubmit({ email, password }: FormData) {
+    await supabase.auth.signUp({
+      email,
+      password: password!
+    })
   }
 
   return (
