@@ -23,3 +23,10 @@ export const Container = styled.form`
         color: ${props => props.theme.error};
     }
 `
+
+export const Footer = styled.div`
+    text-align: center;
+    a {
+        color: ${props => props.theme.primary};
+    }
+`

@@ -4,9 +4,10 @@ import { Input } from "../../components/Input";
 import { Spacer } from "../../components/Spacer";
 import { Container, Footer, RegisterLink, RegisterText, Subtitle, Title, Wrapper } from "./styles";
 import { useAuth } from "../../contexts/AuthContext";
+import { toast } from "react-toastify";
 
 type LoginInputs = {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -20,7 +21,13 @@ export function Login() {
   } = useForm<LoginInputs>()
 
   async function onSubmit(data: LoginInputs) {
-    await signIn(data.username, data.password)
+    const { error } = await signIn(data.email, data.password)
+    if (error) {
+      toast.error("Email ou senha incorretos!", {
+        theme: 'dark',
+        toastId: 'id'
+      })
+    }
   }
 
   return (
@@ -30,8 +37,8 @@ export function Login() {
         <Subtitle>Gerenciador de repertório musical</Subtitle>
         <Spacer direction="vertical" size={12} />
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Input placeholder="Usuário" {...register("username", { required: true })} />
-          {errors.username && <span>Informe o usuário</span>}
+          <Input placeholder="Email" {...register("email", { required: true })} />
+          {errors.email && <span>Informe o usuário</span>}
           <Spacer direction="vertical" size={12} />
           <Input placeholder="Senha" {...register("password", { required: true })} />
           {errors.password && <span>Informe a senha</span>}

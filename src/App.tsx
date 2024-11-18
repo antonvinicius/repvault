@@ -4,6 +4,8 @@ import { GlobalStyle } from "./theme/globalStyle.ts";
 import { AuthContextProvider } from "./contexts/AuthContext.tsx";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes/router.tsx";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export function App() {
   return (
@@ -12,6 +14,7 @@ export function App() {
         <RouterProvider router={router} />
       </AuthContextProvider>
       <GlobalStyle />
+      <ToastContainer pauseOnFocusLoss={false} />
     </ThemeProvider>
   )
 }
