@@ -1,10 +1,16 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { Content, Footer, Header, Wrapper } from "./styles";
 import { Button } from "../Button";
 import { useAuth } from "../../contexts/AuthContext";
+import { FiLogOut } from "react-icons/fi";
+import { useTheme } from "styled-components";
+import { Spacer } from "../Spacer";
+import { MdOutlineExplore } from "react-icons/md";
+import { MdMusicNote } from "react-icons/md";
 
 export function Layout() {
     const { signOut, user } = useAuth()
+    const theme = useTheme()
 
     async function onLogout() {
         await signOut()
@@ -13,20 +19,29 @@ export function Layout() {
     return (
         <Wrapper>
             <Header>
-                <h1>Olá {user?.email?.split("@")[0]}</h1>
-                <Button onClick={onLogout}>Logout</Button>
+                <p>Olá, <h1>{user?.email?.split("@")[0]}</h1></p>
+                <FiLogOut
+                    style={{ cursor: 'pointer' }}
+                    onClick={onLogout}
+                    size={24}
+                    color={theme.primary}
+                />
             </Header>
             <Content>
                 <Outlet />
             </Content>
             <Footer>
-                <Link to="/">
-                    Repertório
-                </Link>
-
-                <Link to="/search">
-                    Explorar
-                </Link>
+                <NavLink to="/">
+                    <MdMusicNote />
+                    <Spacer direction="horizontal" />
+                    <span>Repertório</span>
+                </NavLink>
+                <Spacer direction="horizontal" />
+                <NavLink to="/search">
+                    <MdOutlineExplore />
+                    <Spacer direction="horizontal" />
+                    <span>Explorar</span>
+                </NavLink>
             </Footer>
         </Wrapper>
     )

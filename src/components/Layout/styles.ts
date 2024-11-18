@@ -11,6 +11,8 @@ export const Header = styled.div`
     flex-direction: row;
     padding: 24px;
     background-color: ${props => props.theme.card};
+    align-items: center;
+    justify-content: space-between;
 `
 
 export const Content = styled.div`
@@ -19,7 +21,27 @@ export const Content = styled.div`
 
 export const Footer = styled.div`
     display: flex;
+    padding: 16px;
     flex-direction: row;
-    padding: 24px;
     background-color: ${props => props.theme.card};
+    
+    a {
+        padding: 16px;
+        flex: 1;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        &.active {
+            background-color: ${props => props.theme.primary};
+            color: ${props => props.theme.background};
+        }
+
+        &:not(.active):hover {
+            color: ${props => props.theme.primary};
+        }
+    }
 `
