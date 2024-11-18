@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/Input";
 import { Container } from "./styles";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { debounce } from 'lodash'
 import { SpotifyService } from "../../services/spotify-service";
 import { Song as SongModel } from "../../models/Song";
@@ -23,7 +23,7 @@ export function Search() {
   } = useForm<FormData>()
   const navigate = useNavigate()
   const searchValue = watch('search')
-  const debouncedSearch = debounce(searchSongs, 500)
+  const debouncedSearch = useMemo(() => debounce(searchSongs, 500), [])
 
   async function searchSongs(search: string) {
     if (search) {
