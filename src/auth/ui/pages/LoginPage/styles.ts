@@ -35,6 +35,15 @@ export const Container = styled.div`
     @media (${devices.tablet}) {
         border-radius: 12px;
     }
+
+    form {
+        width: 100%;
+
+        span {
+            font-size: 12px;
+            color: ${props => props.theme.error};
+        }
+    }
 `
 
 export const Title = styled.h1`

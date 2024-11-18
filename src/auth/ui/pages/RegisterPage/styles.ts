@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
     align-items: start;
 `
 
-export const Container = styled.div`
+export const Container = styled.form`
     background-color: ${props => props.theme.card};
     padding: 24px;
     border-radius: 12px;
@@ -17,4 +17,9 @@ export const Container = styled.div`
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
+
+    span {
+        font-size: 12px;
+        color: ${props => props.theme.error};
+    }
 `
