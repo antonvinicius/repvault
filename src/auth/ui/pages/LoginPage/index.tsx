@@ -1,4 +1,4 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Button } from "../../../../shared/ui/components/Button";
 import { Input } from "../../../../shared/ui/components/Input";
 import { Spacer } from "../../../../shared/ui/components/Spacer";
@@ -13,7 +13,6 @@ export function LoginPage() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors }
   } = useForm<LoginInputs>()
 
