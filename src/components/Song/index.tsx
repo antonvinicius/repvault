@@ -26,8 +26,8 @@ export function Song({ song, onClick }: SongProps) {
                 </ImageWrapper>
                 <Spacer direction="horizontal" size={18} />
                 <div>
-                    <h2>{song.name}</h2>
-                    <h1>{song.artist}</h1>
+                    <p>{song.name}</p>
+                    <span>{song.artist}</span>
                 </div>
             </Container>
         </FadeInComponent>

@@ -7,12 +7,18 @@ export const Container = styled.div`
     border-radius: 12px;
     cursor: pointer;
     align-items: center;
+
+    span {
+        font-size: 14px;
+        color: ${props => props.theme.textSecondary};
+    }
 `
 export const StyledImage = styled.img<{ loaded: boolean }>`
     opacity: ${(props) => (props.loaded ? 1 : 0)};
     transition: opacity 0.5s ease-in-out;
-    width: 100%;
-    height: auto;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
     display: block;
 `;
 
