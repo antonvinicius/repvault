@@ -1,8 +1,8 @@
 export type Song = {
     artist: string | null;
     coverImageUrl: string | null;
-    created_at: string;
-    id: string;
+    created_at: string | null;
+    id: string | null;
     name: string | null;
     status: number | null;
 }
