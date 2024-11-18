@@ -1,4 +1,4 @@
-import { AuthError, AuthTokenResponsePassword, Session, User } from "@supabase/supabase-js";
+import { AuthError, AuthTokenResponsePassword, User } from "@supabase/supabase-js";
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../supabase";
 
@@ -15,7 +15,6 @@ const AuthContext = createContext({} as AuthContextType)
 export function AuthContextProvider({ children }: any) {
     const [user, setUser] = useState<User | null>(null)
     const [userPicture, setUserPicture] = useState<string | null>(null)
-    const [session, setSession] = useState<Session | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
     const signIn = async (email: string, password: string) => {
@@ -31,7 +30,6 @@ export function AuthContextProvider({ children }: any) {
         const response = await supabase.auth.signOut();
         if (!response.error) {
             setUser(null);
-            setSession(null);
             setUserPicture(null)
         }
         return response;
@@ -54,7 +52,6 @@ export function AuthContextProvider({ children }: any) {
     useEffect(() => {
         const { data: listener } = supabase.auth.onAuthStateChange(
             (_event, session) => {
-                setSession(session);
                 setUser(session?.user || null);
                 setLoading(false);
             }

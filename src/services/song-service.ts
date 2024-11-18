@@ -14,7 +14,7 @@ export class SongService {
     }
 
     async getSongs() {
-        const { data, error } = await supabase
+        const { data } = await supabase
             .from('songs')
             .select()
 
@@ -22,7 +22,7 @@ export class SongService {
     }
 
     async getSong(id: string) {
-        const { data, error } = await supabase
+        const { data } = await supabase
             .from('songs')
             .select()
             .eq('id', id)
@@ -32,7 +32,7 @@ export class SongService {
     }
 
     async updateSongStatus(id: string, status: number) {
-        const { error } = await supabase
+        await supabase
             .from('songs')
             .update({ status })
             .eq('id', id)
