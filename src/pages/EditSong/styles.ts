@@ -16,3 +16,7 @@ export const Container = styled.div`
         color: ${props => props.theme.textSecondary};
     }
 `
+
+export const ButtonGroup = styled.div`
+    display: flex;
+`

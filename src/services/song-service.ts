@@ -37,4 +37,11 @@ export class SongService {
             .update({ status })
             .eq('id', id)
     }
+
+    async deleteSong(id: string) {
+        await supabase
+            .from('songs')
+            .delete()
+            .eq('id', id)
+    }
 }

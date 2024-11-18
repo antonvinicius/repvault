@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const Container = styled.button`
+export const Container = styled.button<{ customColor?: string }>`
     width: 100%;
     padding: 20px;
-    background-color: ${props => props.theme.primary};
+    background-color: ${props => props.customColor ? props.customColor : props.theme.primary};
     border-radius: 12px;
     box-sizing: border-box;
     text-align: center;
