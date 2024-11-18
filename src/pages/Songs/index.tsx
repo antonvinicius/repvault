@@ -13,6 +13,7 @@ export function Songs() {
   const [status, setStatus] = useState(0)
   const [songs, setSongs] = useState<SongModel[]>([])
   const navigate = useNavigate()
+  const songsFiltered = songs.filter(it => it.status == status)
 
   async function fetchSongs() {
     const data = await songService.getSongs()
@@ -34,7 +35,7 @@ export function Songs() {
       <Spacer direction="vertical" />
       <Status selectedStatus={status} onStatusChanged={setStatus} />
       <Spacer direction="vertical" />
-      {songs.map(item => (
+      {songsFiltered.map(item => (
         <div key={item.id}>
           <Song song={item} onClick={onSongClicked} />
           <Spacer direction="vertical" size={12} />
