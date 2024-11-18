@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { Content, Footer, Header, Wrapper } from "./styles";
+import { Content, Footer, FooterWrapper, Header, HeaderWrapper, Wrapper } from "./styles";
 import { useAuth } from "../../contexts/AuthContext";
 import { FiLogOut } from "react-icons/fi";
 import { useTheme } from "styled-components";
@@ -17,31 +17,35 @@ export function Layout() {
 
     return (
         <Wrapper>
-            <Header>
-                <p>Olá, <span>{user?.email?.split("@")[0]}</span></p>
-                <FiLogOut
-                    style={{ cursor: 'pointer' }}
-                    onClick={onLogout}
-                    size={24}
-                    color={theme.primary}
-                />
-            </Header>
+            <HeaderWrapper>
+                <Header>
+                    <p>Olá, <span>{user?.email?.split("@")[0]}</span></p>
+                    <FiLogOut
+                        style={{ cursor: 'pointer' }}
+                        onClick={onLogout}
+                        size={24}
+                        color={theme.primary}
+                    />
+                </Header>
+            </HeaderWrapper>
             <Content>
                 <Outlet />
             </Content>
-            <Footer>
-                <NavLink to="/">
-                    <MdMusicNote />
+            <FooterWrapper>
+                <Footer>
+                    <NavLink to="/">
+                        <MdMusicNote />
+                        <Spacer direction="horizontal" />
+                        <span>Repertório</span>
+                    </NavLink>
                     <Spacer direction="horizontal" />
-                    <span>Repertório</span>
-                </NavLink>
-                <Spacer direction="horizontal" />
-                <NavLink to="/search">
-                    <MdOutlineExplore />
-                    <Spacer direction="horizontal" />
-                    <span>Explorar</span>
-                </NavLink>
-            </Footer>
+                    <NavLink to="/search">
+                        <MdOutlineExplore />
+                        <Spacer direction="horizontal" />
+                        <span>Explorar</span>
+                    </NavLink>
+                </Footer>
+            </FooterWrapper>
         </Wrapper>
     )
 }

@@ -12,3 +12,8 @@ export const Container = styled.div`
         text-align: center;
     }
 `
+
+export const Wrapper = styled.div`
+    width: 100%;
+    background-color: ${props => props.theme.card};
+`

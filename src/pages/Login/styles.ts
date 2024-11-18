@@ -29,11 +29,12 @@ export const Container = styled.div`
     background-color: ${props => props.theme.card};
     padding: 24px;
     width: 100%;
-    max-width: 600px;
-    border: 2px solid ${props => props.theme.gray};
+    max-width: 500px;
+    border: 1px solid ${props => props.theme.gray};
 
     @media (${devices.tablet}) {
         border-radius: 12px;
+        height: 400px;
     }
 
     form {

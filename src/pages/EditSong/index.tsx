@@ -63,6 +63,7 @@ export function EditSong() {
             <ButtonGroup>
                 <Button onClick={onEditSong}>Editar música</Button>
                 <Spacer direction="horizontal" size={24} />
+                <Spacer direction="vertical" size={24} />
                 <Button onClick={onDeleteSong} color={theme.error}>Excluir</Button>
             </ButtonGroup>
         </Container>

@@ -13,15 +13,26 @@ export const Header = styled.div`
     background-color: ${props => props.theme.card};
     align-items: center;
     justify-content: space-between;
+    max-width: 800px;
+    margin: auto;
+`
+
+export const HeaderWrapper = styled.div`
+    background-color: ${props => props.theme.card};
+    width: 100%;
 `
 
 export const Content = styled.div`
     flex: 1;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
 `
 
 export const Footer = styled.div`
+    max-width: 800px;
+    width: 100%;
     display: flex;
-    padding: 16px;
     flex-direction: row;
     background-color: ${props => props.theme.card};
     
@@ -44,4 +55,12 @@ export const Footer = styled.div`
             color: ${props => props.theme.primary};
         }
     }
+`
+
+export const FooterWrapper = styled.div`
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    background-color: ${props => props.theme.card};
 `
