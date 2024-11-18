@@ -34,11 +34,11 @@ export const router = createBrowserRouter([
                 element: <ProtectedPage />,
                 children: [
                     {
-                        path: '/songs',
+                        path: '/',
                         element: <SongsListPage />
                     },
                     {
-                        path: '/search',
+                        path: 'search',
                         element: <SongsSearchPage />
                     }
                 ]
