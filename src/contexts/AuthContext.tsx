@@ -20,14 +20,11 @@ export function AuthContextProvider({ children }: any) {
             email,
             password
         });
-        console.log('data: ', response.data);
-        console.log('error: ', response.error);
         return response;
     };
 
     const signOut = async () => {
         const response = await supabase.auth.signOut();
-        console.log('error: ', response.error);
         if (!response.error) {
             setUser(null);
             setSession(null);
@@ -38,7 +35,6 @@ export function AuthContextProvider({ children }: any) {
     useEffect(() => {
         const { data: listener } = supabase.auth.onAuthStateChange(
             (_event, session) => {
-                console.log('session onAuthStateChange: ', session);
                 setSession(session);
                 setUser(session?.user || null);
                 setLoading(false);

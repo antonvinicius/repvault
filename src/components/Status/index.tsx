@@ -10,9 +10,9 @@ export function Status({ selectedStatus }: StatusProps) {
     const status = toStatus(selectedStatus)
     return (
         <Container>
-            <Label isSelected={status == StatusEnum.LEARNING}>Aprendendo</Label>
-            <Label isSelected={status == StatusEnum.WISH_TO_LEARN}>Quero aprender</Label>
-            <Label isSelected={status == StatusEnum.REPERTORY}>Já sei tocar</Label>
+            <Label selected={status == StatusEnum.LEARNING}>Aprendendo</Label>
+            <Label selected={status == StatusEnum.WISH_TO_LEARN}>Quero aprender</Label>
+            <Label selected={status == StatusEnum.REPERTORY}>Já sei tocar</Label>
         </Container>
     )
 }

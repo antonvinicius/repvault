@@ -18,7 +18,7 @@ export function Layout() {
     return (
         <Wrapper>
             <Header>
-                <p>Olá, <h1>{user?.email?.split("@")[0]}</h1></p>
+                <p>Olá, <span>{user?.email?.split("@")[0]}</span></p>
                 <FiLogOut
                     style={{ cursor: 'pointer' }}
                     onClick={onLogout}

@@ -12,7 +12,7 @@ export function Songs() {
       artist: 'Oasis',
       coverImageUrl: 'https://i.scdn.co/image/ab67616d0000b27365b227c58f4d337f5d41a963',
       created_at: '',
-      id: '',
+      id: '1',
       name: 'Stand By Me',
       status: 1
     },
@@ -20,7 +20,7 @@ export function Songs() {
       artist: 'Oasis',
       coverImageUrl: 'https://i.scdn.co/image/ab67616d0000b27365b227c58f4d337f5d41a963',
       created_at: '',
-      id: '',
+      id: '2',
       name: 'Stand By Me',
       status: 1
     },
@@ -28,7 +28,7 @@ export function Songs() {
       artist: 'Oasis',
       coverImageUrl: 'https://i.scdn.co/image/ab67616d0000b27365b227c58f4d337f5d41a963',
       created_at: '',
-      id: '',
+      id: '3',
       name: 'Stand By Me',
       status: 1
     },
@@ -36,7 +36,7 @@ export function Songs() {
       artist: 'Oasis',
       coverImageUrl: 'https://i.scdn.co/image/ab67616d0000b27365b227c58f4d337f5d41a963',
       created_at: '',
-      id: '',
+      id: '4',
       name: 'Stand By Me',
       status: 1
     },
@@ -59,10 +59,10 @@ export function Songs() {
       <Status selectedStatus={0} />
       <Spacer direction="vertical" />
       {songs.map(item => (
-        <>
+        <div key={item.id}>
           <Song song={item} />
           <Spacer direction="vertical" size={12} />
-        </>
+        </div>
       ))}
     </Container>
   )
