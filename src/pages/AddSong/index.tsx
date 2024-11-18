@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { Container } from "./styles"
 import { Status } from "../../components/Status";
 import { Button } from "../../components/Button";
@@ -26,6 +26,10 @@ export function AddSong() {
         })
 
         navigate(-1)
+    }
+
+    if (!name || !artist || !coverImageUrl) {
+        return <Navigate to={"/"} replace />
     }
 
     return (
