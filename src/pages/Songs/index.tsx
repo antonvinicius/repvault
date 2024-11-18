@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { Song as SongModel } from "../../models/Song"
-import { supabase } from "../../supabase"
 import { Song } from "../../components/Song"
 import { Container } from "./styles"
 import { Spacer } from "../../components/Spacer"

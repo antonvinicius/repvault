@@ -25,7 +25,7 @@ export function AddSong() {
             status
         })
 
-        navigate(-1)
+        navigate("/")
     }
 
     if (!name || !artist || !coverImageUrl) {
