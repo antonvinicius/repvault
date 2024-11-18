@@ -27,7 +27,6 @@ export function Search() {
 
   async function searchSongs(search: string) {
     if (search) {
-      console.log('buscou: ', search)
       const songs = await spotifyService.searchSongs(search)
       setSongs(songs)
     }

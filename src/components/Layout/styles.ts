@@ -42,7 +42,9 @@ export const ImageChange = styled.div`
 `
 
 export const ProfilePicture = styled.img`
-    z-index: -99;
+    object-fit: cover;
+    width: 80px;
+    height: 80px;
 `
 
 export const ImageWrapper = styled.div`

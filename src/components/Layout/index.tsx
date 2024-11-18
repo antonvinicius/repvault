@@ -7,14 +7,39 @@ import { Spacer } from "../Spacer";
 import { MdOutlineExplore } from "react-icons/md";
 import { MdMusicNote } from "react-icons/md";
 import { IoIosImages } from "react-icons/io";
+import { useRef } from "react";
+import { toast } from "react-toastify";
 
 export function Layout() {
-    const { signOut, user } = useAuth()
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    const { signOut, user, uploadProfilePicture, userPicture } = useAuth()
     const theme = useTheme()
     const username = user?.email?.split("@")[0]
 
     async function onLogout() {
         await signOut()
+    }
+
+    function onChangeProfilePicture() {
+        if (!fileInputRef.current) return;
+        fileInputRef.current.click();
+    }
+
+    async function onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+        const file = event.target.files?.[0];
+
+        if (!file) {
+            toast.error("Nenhuma imagem selecionada!", {
+                theme: 'dark'
+            })
+            return;
+        }
+
+        await uploadProfilePicture(file)
+
+        toast.success("Foto de perfil atualizada com sucesso!", {
+            theme: 'dark'
+        })
     }
 
     return (
@@ -23,11 +48,20 @@ export function Layout() {
                 <Header>
                     <HeaderProfile>
                         <ImageWrapper>
-                            <ImageChange>
+                            <input
+                                type="file"
+                                ref={fileInputRef}
+                                style={{ display: "none" }}
+                                onChange={onFileChange}
+                                accept="image/*"
+                            />
+                            <ImageChange onClick={onChangeProfilePicture}>
                                 <IoIosImages color={theme.primary} />
                             </ImageChange>
                             <ProfilePicture
-                                src={`https://ui-avatars.com/api/?name=${username}`}
+                                width={80}
+                                height={80}
+                                src={userPicture ?? `https://ui-avatars.com/api/?name=${username}`}
                             />
                         </ImageWrapper>
                         <ProfileName>
