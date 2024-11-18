@@ -5,17 +5,23 @@ import { Container } from "./styles"
 import { Spacer } from "../../components/Spacer"
 import { Status } from "../../components/Status"
 import { SongService } from "../../services/song-service"
+import { useNavigate } from "react-router-dom"
 
 const songService = new SongService()
 
 export function Songs() {
   const [status, setStatus] = useState(0)
   const [songs, setSongs] = useState<SongModel[]>([])
+  const navigate = useNavigate()
 
   async function fetchSongs() {
     const data = await songService.getSongs()
 
     setSongs(data)
+  }
+
+  function onSongClicked(song: SongModel) {
+    navigate(`/song/edit/${song.id}`)
   }
 
   useEffect(() => {
@@ -30,7 +36,7 @@ export function Songs() {
       <Spacer direction="vertical" />
       {songs.map(item => (
         <div key={item.id}>
-          <Song song={item} />
+          <Song song={item} onClick={onSongClicked} />
           <Spacer direction="vertical" size={12} />
         </div>
       ))}

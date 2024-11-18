@@ -20,4 +20,21 @@ export class SongService {
 
         return data as Song[]
     }
+
+    async getSong(id: string) {
+        const { data, error } = await supabase
+            .from('songs')
+            .select()
+            .eq('id', id)
+            .single()
+
+        return data
+    }
+
+    async updateSongStatus(id: string, status: number) {
+        const { error } = await supabase
+            .from('songs')
+            .update({ status })
+            .eq('id', id)
+    }
 }

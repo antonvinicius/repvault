@@ -7,6 +7,7 @@ import { Root } from "../pages/Root";
 import { Register } from "../pages/Register";
 import { PublicPage } from "./PublicPage";
 import { AddSong } from "../pages/AddSong";
+import { EditSong } from "../pages/EditSong";
 
 export const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
                     {
                         path: 'add',
                         element: <AddSong />
+                    },
+                    {
+                        path: 'edit/:id',
+                        element: <EditSong />
                     }
                 ]
             }
