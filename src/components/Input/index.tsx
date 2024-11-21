@@ -1,6 +1,7 @@
 import { forwardRef, useState } from "react";
 import { IconWrapper, InputWrapper, StyledInput } from "./styles";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Spacer } from "../Spacer";
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
     startIcon?: React.ReactNode;
@@ -17,7 +18,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({ startIcon, endI
 
     return (
         <InputWrapper>
-            {startIcon && <IconWrapper>{startIcon}</IconWrapper>}
+            {startIcon && (
+                <>
+                    <IconWrapper>{startIcon}</IconWrapper>
+                    <Spacer direction="horizontal" />
+                </>
+            )}
             <StyledInput
                 ref={ref}
                 type={isPassword && !showPassword ? "password" : "text"}
