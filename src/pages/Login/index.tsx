@@ -5,7 +5,7 @@ import { Spacer } from "../../components/Spacer";
 import { Container, Footer, RegisterLink, RegisterText, Subtitle, Title, Wrapper } from "./styles";
 import { useAuth } from "../../contexts/AuthContext";
 import { toast } from "react-toastify";
-import { MdEmail } from "react-icons/md";
+import { MdEmail, MdLock } from "react-icons/md";
 
 type LoginInputs = {
   email: string;
@@ -41,7 +41,7 @@ export function Login() {
           <Input startIcon={<MdEmail />} placeholder="Email" {...register("email", { required: true })} />
           {errors.email && <span>Informe o usuário</span>}
           <Spacer direction="vertical" size={12} />
-          <Input isPassword placeholder="Senha" {...register("password", { required: true })} />
+          <Input startIcon={<MdLock />} isPassword placeholder="Senha" {...register("password", { required: true })} />
           {errors.password && <span>Informe a senha</span>}
           <Spacer direction="vertical" size={20} />
           <Button>Login</Button>
