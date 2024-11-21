@@ -9,23 +9,26 @@ export class SongService {
                 artist: song.artist,
                 coverImageUrl: song.coverImageUrl,
                 name: song.name,
-                status: song.status
+                status: song.status,
+                userId: song.userId
             })
     }
 
-    async getSongs() {
+    async getSongs(userId: string) {
         const { data } = await supabase
             .from('songs')
             .select()
+            .eq('userId', userId)
 
         return data as Song[]
     }
 
-    async getSong(id: string) {
+    async getSong(id: string, userId: string) {
         const { data } = await supabase
             .from('songs')
             .select()
             .eq('id', id)
+            .eq('userId', userId)
             .single()
 
         return data

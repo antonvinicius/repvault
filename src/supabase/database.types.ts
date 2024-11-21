@@ -1,3 +1,6 @@
+Need to install the following packages:
+supabase@1.223.10
+Ok to proceed? (y) 
 export type Json =
   | string
   | number
@@ -17,6 +20,7 @@ export type Database = {
           id: string
           name: string | null
           status: number | null
+          userId: string | null
         }
         Insert: {
           artist?: string | null
@@ -25,6 +29,7 @@ export type Database = {
           id?: string
           name?: string | null
           status?: number | null
+          userId?: string | null
         }
         Update: {
           artist?: string | null
@@ -33,6 +38,7 @@ export type Database = {
           id?: string
           name?: string | null
           status?: number | null
+          userId?: string | null
         }
         Relationships: []
       }

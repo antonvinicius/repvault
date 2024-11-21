@@ -6,6 +6,7 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./routes/router.tsx";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import "react-lazy-load-image-component/src/effects/opacity.css";
 
 export function App() {
   return (

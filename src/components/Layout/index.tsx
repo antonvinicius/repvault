@@ -7,14 +7,16 @@ import { Spacer } from "../Spacer";
 import { MdOutlineExplore } from "react-icons/md";
 import { MdMusicNote } from "react-icons/md";
 import { IoIosImages } from "react-icons/io";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
+import imageCompression from "browser-image-compression";
 
 export function Layout() {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const { signOut, user, uploadProfilePicture, userPicture } = useAuth()
     const theme = useTheme()
     const username = user?.email?.split("@")[0]
+    const [profilePicSrc, setProfilePicSrc] = useState(userPicture ?? `https://ui-avatars.com/api/?name=${username}`)
 
     async function onLogout() {
         await signOut()
@@ -35,12 +37,25 @@ export function Layout() {
             return;
         }
 
-        await uploadProfilePicture(file)
+        const options = {
+            maxSizeMB: 0.4,
+            maxWidthOrHeight: 1024,
+            useWebWorker: true,
+        };
+
+        const compressedFile = await imageCompression(file, options);
+        await uploadProfilePicture(compressedFile)
 
         toast.success("Foto de perfil atualizada com sucesso!", {
             theme: 'dark'
         })
     }
+
+    useEffect(() => {
+        if (userPicture) {
+            setProfilePicSrc(userPicture)
+        }
+    }, [userPicture])
 
     return (
         <Wrapper>
@@ -59,9 +74,13 @@ export function Layout() {
                                 <IoIosImages color={theme.primary} />
                             </ImageChange>
                             <ProfilePicture
+                                effect="opacity"
                                 width={80}
                                 height={80}
-                                src={userPicture ?? `https://ui-avatars.com/api/?name=${username}`}
+                                src={profilePicSrc}
+                                onError={() => {
+                                    setProfilePicSrc(`https://ui-avatars.com/api/?name=${username}`)
+                                }}
                             />
                         </ImageWrapper>
                         <ProfileName>

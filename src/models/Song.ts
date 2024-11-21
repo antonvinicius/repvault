@@ -5,4 +5,5 @@ export type Song = {
     id: string | null;
     name: string | null;
     status: number | null;
+    userId: string | null;
 }

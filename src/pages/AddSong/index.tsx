@@ -8,6 +8,7 @@ import { useState } from "react";
 import { SongService } from "../../services/song-service";
 import { FadeInComponent } from "../../components/FadeInContainer";
 import { Loading } from "../../components/Loading";
+import { useAuth } from "../../contexts/AuthContext";
 
 const songService = new SongService()
 
@@ -17,6 +18,7 @@ export function AddSong() {
     const location = useLocation();
     const { name, artist, coverImageUrl } = location.state || {};
     const navigate = useNavigate()
+    const { user } = useAuth()
 
     async function onAddSong() {
         setLoading(true)
@@ -27,7 +29,8 @@ export function AddSong() {
             name: name as string,
             created_at: null,
             id: null,
-            status
+            status,
+            userId: user?.id ?? null
         })
 
         navigate("/")

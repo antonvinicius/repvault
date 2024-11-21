@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export const Wrapper = styled.div`
     display: flex;
@@ -41,16 +42,18 @@ export const ImageChange = styled.div`
     
 `
 
-export const ProfilePicture = styled.img`
+export const ProfilePicture = styled(LazyLoadImage)`
     object-fit: cover;
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
+    border-radius: 400px;
 `
 
 export const ImageWrapper = styled.div`
-    border-radius: 40px;
     position: relative;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover ${ImageChange} {
         visibility: visible;

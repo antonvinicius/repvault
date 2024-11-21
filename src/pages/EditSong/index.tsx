@@ -10,6 +10,7 @@ import { Status } from "../../components/Status";
 import { useTheme } from "styled-components";
 import { FadeInComponent } from "../../components/FadeInContainer";
 import { Loading } from "../../components/Loading";
+import { useAuth } from "../../contexts/AuthContext";
 
 const songService = new SongService()
 
@@ -20,6 +21,7 @@ export function EditSong() {
     const [song, setSong] = useState<Song | null>(null)
     const { id } = useParams();
     const navigate = useNavigate()
+    const { user } = useAuth()
 
     async function onEditSong() {
         setLoading(true)
@@ -29,7 +31,7 @@ export function EditSong() {
 
     async function fetchSong() {
         setTimeout(async () => {
-            const song = await songService.getSong(id as string)
+            const song = await songService.getSong(id as string, user!.id)
             if (song) {
                 setSong(song as Song)
                 setStatus(song.status!)

@@ -1,6 +1,7 @@
 import { AuthError, AuthTokenResponsePassword, User } from "@supabase/supabase-js";
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../supabase";
+import { Loading } from "../components/Loading";
 
 type AuthContextType = {
     user?: User | null;
@@ -53,7 +54,9 @@ export function AuthContextProvider({ children }: any) {
         const { data: listener } = supabase.auth.onAuthStateChange(
             (_event, session) => {
                 setUser(session?.user || null);
-                setLoading(false);
+                setTimeout(() => {
+                    setLoading(false);
+                }, 1000);
             }
         );
         return () => {
@@ -65,6 +68,8 @@ export function AuthContextProvider({ children }: any) {
         const { data: publicUrlData } = supabase.storage
             .from("usersbucket")
             .getPublicUrl(`profile_pictures/${user?.id}.png`);
+
+        console.log(publicUrlData.publicUrl)
 
         setUserPicture(`${publicUrlData.publicUrl}?timestamp=${new Date().getTime()}`)
     }
@@ -82,7 +87,7 @@ export function AuthContextProvider({ children }: any) {
         uploadProfilePicture,
         userPicture
     }}>
-        {loading ? <h1>loading</h1> : children}
+        {loading ? <Loading /> : children}
     </AuthContext.Provider>
 }
 
