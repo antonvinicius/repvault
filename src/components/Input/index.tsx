@@ -1,9 +1,35 @@
-import { forwardRef } from "react";
-import { Container } from "./styles";
+import { forwardRef, useState } from "react";
+import { IconWrapper, InputWrapper, StyledInput } from "./styles";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+    startIcon?: React.ReactNode;
+    endIcon?: React.ReactNode;
+    isPassword?: boolean;
 }
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(({ ...rest }, ref) => {
-    return <Container ref={ref} {...rest} />;
+export const Input = forwardRef<HTMLInputElement, InputProps>(({ startIcon, endIcon, isPassword, ...rest }, ref) => {
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
+    return (
+        <InputWrapper>
+            {startIcon && <IconWrapper>{startIcon}</IconWrapper>}
+            <StyledInput
+                ref={ref}
+                type={isPassword && !showPassword ? "password" : "text"}
+                {...rest}
+            />
+            {isPassword ? (
+                <IconWrapper onClick={togglePasswordVisibility}>
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </IconWrapper>
+            ) : (
+                endIcon && <IconWrapper>{endIcon}</IconWrapper>
+            )}
+        </InputWrapper>
+    );
 });

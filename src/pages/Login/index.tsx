@@ -5,6 +5,7 @@ import { Spacer } from "../../components/Spacer";
 import { Container, Footer, RegisterLink, RegisterText, Subtitle, Title, Wrapper } from "./styles";
 import { useAuth } from "../../contexts/AuthContext";
 import { toast } from "react-toastify";
+import { MdEmail } from "react-icons/md";
 
 type LoginInputs = {
   email: string;
@@ -37,10 +38,10 @@ export function Login() {
         <Subtitle>Gerenciador de repertório musical</Subtitle>
         <Spacer direction="vertical" size={12} />
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Input placeholder="Email" {...register("email", { required: true })} />
+          <Input startIcon={<MdEmail />} placeholder="Email" {...register("email", { required: true })} />
           {errors.email && <span>Informe o usuário</span>}
           <Spacer direction="vertical" size={12} />
-          <Input placeholder="Senha" {...register("password", { required: true })} />
+          <Input isPassword placeholder="Senha" {...register("password", { required: true })} />
           {errors.password && <span>Informe a senha</span>}
           <Spacer direction="vertical" size={20} />
           <Button>Login</Button>

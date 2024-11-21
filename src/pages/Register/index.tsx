@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { supabase } from "../../supabase";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { MdEmail } from "react-icons/md";
 
 const schema = yup
   .object({
@@ -45,13 +46,13 @@ export function Register() {
       <Container onSubmit={handleSubmit(onSubmit)}>
         <div>
           <Spacer direction="vertical" size={12} />
-          <Input placeholder="Email" {...register("email", { required: true })} />
+          <Input startIcon={<MdEmail />} placeholder="Email" {...register("email", { required: true })} />
           <span>{errors.email?.message}</span>
           <Spacer direction="vertical" size={12} />
-          <Input placeholder="Senha" {...register("password", { required: true })} />
+          <Input isPassword placeholder="Senha" {...register("password", { required: true })} />
           <span>{errors.password?.message}</span>
           <Spacer direction="vertical" size={12} />
-          <Input placeholder="Confirme sua senha" {...register("confirmPassword", { required: true })} />
+          <Input isPassword placeholder="Confirme sua senha" {...register("confirmPassword", { required: true })} />
           <span>{errors.confirmPassword?.message}</span>
           <Spacer direction="vertical" size={24} />
         </div>
