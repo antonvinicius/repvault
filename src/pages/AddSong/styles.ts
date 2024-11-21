@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { devices } from "../../helpers/devices";
 
 export const Container = styled.div`
     max-width: 800px;
@@ -9,26 +8,28 @@ export const Container = styled.div`
     flex-direction: column;
     width: 100%;
     padding: 22px;
-    height: 100vh;
+    height: 100dvh;
     justify-content: space-between;
-    
+
     h1 {
+        align-self: flex-start;
         font-size: 22px;
     }
 
     h2 {
+        align-self: flex-start;
         color: ${props => props.theme.textSecondary};
     } 
 
     img {
         width: 100%;
-        max-width: 400px;
+        max-width: 200px;
     }
 
-    @media(${devices.tablet}) {
-        button {
-            margin-top: 52px;
-            width: 400px;
-        }
+    > div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 `

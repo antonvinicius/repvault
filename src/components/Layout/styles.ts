@@ -4,7 +4,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100dvh;
 `
 
 export const Header = styled.div`

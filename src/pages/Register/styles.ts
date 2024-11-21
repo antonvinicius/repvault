@@ -4,7 +4,7 @@ import loginBg from '../../assets/login_background.png'
 
 export const Wrapper = styled.div`
     display: flex;
-    height: 100vh;
+    height: 100dvh;
     justify-content: center;
     align-items: center;
 
